@@ -23,17 +23,30 @@
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				  <li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="index.html">Home</a>
+					<a class="nav-link" aria-current="page" href="index.html">Home</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="toys.html">Toys</a>
+					<div class="dropdown nav-link">
+					  <button class="dropbtn">Dropdown 
+						<i class="fa fa-caret-down"></i>
+					  </button>
+					  <div class="dropdown-content">
+						<a href="toys.html">Toys</a>
+						<a href="contacts1.html">Contacts</a>
+						<a href="registration1.html">Registration</a>
+					  </div>
+					</div>
 				  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="contacts1.html">Contacts</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="registration1.html">Registration</a>
-                  </li>
+				  <li>
+					<div id="gif">
+						<button onclick="playAudio()" type="button">
+							<img src="./gif.gif" alt="gif" style="width: 2rem;"></button>
+						<audio id="myAudio">
+							<source src="./sound.mp3" type="audio/mpeg">
+						</audio>
+					</div>
+
+				  </li>
 				</ul>
 			  </div>
 			</div>
@@ -50,44 +63,31 @@
 					<br>
 					<a href="toys.html" class="shop">Buy now</a>
 				</div>
-				<div id="gif">
-					<button onclick="playAudio()" type="button">
-						<img src="./колокольчик.png" alt="gif" style="width: 3rem;"></button>
-					<audio id="myAudio">
-						<source src="./sound.mp3" type="audio/mpeg">
-					</audio>
-				</div>
 			</div>
 	
-			<div id="carouselExampleIndicators" class="col-lg-6 col-12 carousel slide" data-bs-ride="carousel">
-				<br>
-				<br>
-				<br>
-				<div class="carousel-indicators">
-				  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-				  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-				  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			<div class="col-lg-6 col-12 slideshow-container">
+
+				<div class="mySlides fade">
+				  <img src="slide 1.jfif" style="width:100%; height: 500px;">
 				</div>
-				<div class="carousel-inner">
-				  <div class="carousel-item active" id="caruselimg">
-					<img src="slide 1.jfif" class="d-block w-100" alt="...">
-				  </div>
-				  <div class="carousel-item" id="caruselimg">
-					<img src="slide 2.jpg" class="d-block w-100" alt="...">
-				  </div>
-				  <div class="carousel-item" id="caruselimg">
-					<img src="slide 3.jpg" class="d-block w-100" alt="...">
-				  </div>
+				
+				<div class="mySlides fade">
+				  <img src="slide 2.jpg" style="width:100%; height: 500px;">
 				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				  <span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				  <span class="visually-hidden">Next</span>
-				</button>
-			  </div>
+				
+				<div class="mySlides fade">
+				  <img src="slide 3.jpg" style="width:100%; height: 500px;">
+				</div>
+				<br>
+				
+				<div style="text-align:center">
+				  <span class="dot"></span> 
+				  <span class="dot"></span> 
+				  <span class="dot"></span> 
+				</div>
+				
+				</div>
+				
 	
 		</div>
 
@@ -104,6 +104,27 @@
 		function playAudio() { 
 		  x.play(); 
 		} 
-	</script>		
+	</script>	
+				<script>
+				var slideIndex = 0;
+				showSlides();
+				
+				function showSlides() {
+				  var i;
+				  var slides = document.getElementsByClassName("mySlides");
+				  var dots = document.getElementsByClassName("dot");
+				  for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";  
+				  }
+				  slideIndex++;
+				  if (slideIndex > slides.length) {slideIndex = 1}    
+				  for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				  }
+				  slides[slideIndex-1].style.display = "block";  
+				  dots[slideIndex-1].className += " active";
+				  setTimeout(showSlides, 2000); // Change image every 2 seconds
+				}
+				</script>	
 </body>
 </html>
